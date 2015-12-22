@@ -1,0 +1,33 @@
+---
+- name: Import the NodeSource GPG key into apt
+  become: yes
+  apt_key:
+    url: https://deb.nodesource.com/gpgkey/nodesource.gpg.key
+    state: present
+
+- name: Add NodeSource deb repository
+  become: yes
+  apt_repository:
+    repo: 'deb https://deb.nodesource.com/node_4.x {{ ansible_distribution_release }} main'
+    state: present
+
+- name: Add NodeSource deb-src repository
+  become: yes
+  apt_repository:
+    repo: 'deb-src https://deb.nodesource.com/node_4.x {{ ansible_distribution_release }} main'
+    state: present
+
+- name: Make sure packages are present
+  become: yes
+  apt:
+    name: nodejs
+    state: present
+    update_cache: yes
+    cache_valid_time: 86400
+
+- name: Install packages with NPM
+  become: yes
+  npm:
+    name: "{{ item }}"
+    global: yes
+  with_items: nodejs.npm.packages
