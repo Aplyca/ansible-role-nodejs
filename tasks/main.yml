@@ -1,4 +1,10 @@
 ---
+- name: Make sure apt-transport-https packages is present
+  become: yes
+  apt:
+    name: apt-transport-https
+    state: present
+
 - name: Import the NodeSource GPG key into apt
   become: yes
   apt_key:
