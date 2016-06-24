@@ -1,0 +1,6 @@
+---
+- name: Install NodeJS
+  hosts: all
+  connection: local
+  roles:
+    - { role: Aplyca.NodeJS, tags: ["nodejs"] }
