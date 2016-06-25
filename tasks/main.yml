@@ -1,9 +1,9 @@
 ---
-- name: Make sure apt-transport-https packages is present
+- name: Update packages repos
   become: yes
   apt:
-    name: "apt-transport-https"
-    state: present
+    update_cache: yes
+    cache_valid_time: 86400
 
 - name: Import the NodeSource GPG key into apt
   become: yes

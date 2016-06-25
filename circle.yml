@@ -4,6 +4,6 @@ dependencies:
 
 test:
   pre:
-    - sudo ln -s ansible-role-nodejs ../aplyca.NodeJS
+    - sudo ln -s ansible-role-nodejs ../Aplyca.NodeJS
   override:
     - tests/tests.sh

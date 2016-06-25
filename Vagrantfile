@@ -3,6 +3,7 @@ Vagrant.configure(2) do |config|
       #Assigning a provider
       config_machine.vm.provider :virtualbox do |virtualbox, override|
         virtualbox.name = "Vagrant NodeJS"
+        #override.vm.box = "chef/centos-7.0"
 	    override.vm.box = "ubuntu/trusty64"
       end
 
