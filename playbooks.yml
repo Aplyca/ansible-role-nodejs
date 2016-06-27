@@ -1,6 +1,5 @@
 ---
-- name: Install NodeJS
+- name: Provision NodeJS
   hosts: all
-  connection: local
   roles:
     - { role: Aplyca.NodeJS, tags: ["nodejs"] }
