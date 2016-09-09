@@ -1,9 +1,27 @@
 ---
-- name: Make sure apt-transport-https packages is present
+- name: Add key for ppa python repository
+  apt_key: 
+    keyserver: keyserver.ubuntu.com
+    id: DB82666C
+    state: present
+  become: yes
+
+- name: Add ppa python repository
+  apt_repository:
+    repo: 'deb http://ppa.launchpad.net/fkrull/deadsnakes-python2.7/ubuntu {{ ansible_distribution_release }} main'
+    state: present
+    update_cache: yes
+  become: yes
+
+- name: Make sure required packages are present
   become: yes
   apt:
-    name: "apt-transport-https"
-    state: present
+    pkg: "{{ item }}"
+    state: latest
+    install_recommends: no
+  with_items:
+    - python2.7
+    - "apt-transport-https"
 
 - name: Import the NodeSource GPG key into apt
   become: yes

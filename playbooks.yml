@@ -3,3 +3,13 @@
   hosts: all
   roles:
     - { role: Aplyca.NodeJS, tags: ["nodejs"] }
+  tasks:
+    - debug: var=nodejs
+      tags: vars
+  post_tasks:
+    - name: Check if NodeJS is installed
+      shell: "node --version"
+    - name: Check if NPM is installed
+      shell: "npm --version"
+    - name: Check if Bower is installed with NPM
+      shell: "bower --version"      
