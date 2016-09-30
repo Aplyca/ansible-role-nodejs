@@ -1,4 +1,7 @@
 ---
+- debug: var=nodejs verbosity=1
+  tags: vars
+
 - name: Add key for ppa python repository
   apt_key: 
     keyserver: keyserver.ubuntu.com

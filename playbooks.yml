@@ -3,9 +3,6 @@
   hosts: all
   roles:
     - { role: Aplyca.NodeJS, tags: ["nodejs"] }
-  tasks:
-    - debug: var=nodejs
-      tags: vars
   post_tasks:
     - name: Check if NodeJS is installed
       shell: "node --version"
