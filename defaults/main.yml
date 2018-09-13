@@ -1,5 +1,5 @@
 ---
 nodejs:
-  version: 8.x
+  version: 10.x
   npm:
     packages: []
